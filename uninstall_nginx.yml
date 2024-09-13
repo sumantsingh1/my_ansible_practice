@@ -1,0 +1,11 @@
+- name: install nginx task
+  hosts: web
+  become: yes
+  
+  tasks:
+    
+        
+    - name: uninstalling nginx
+      dnf: 
+        name: nginx
+        state: absent

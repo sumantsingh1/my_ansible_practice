@@ -1,0 +1,20 @@
+- name: install nginx task
+  hosts: web
+  become: yes
+  
+
+  tasks:
+    - name: installing nginx
+      dnf:
+        name: nginx
+        state: present
+
+    - name: start the nginx
+      service: 
+        name: nginx
+        state: started
+
+    - name: deploy the static page in nginx
+      copy:
+        src: /home/ec2-user/research/index_nginx.html
+        dest: /usr/share/nginx/html

@@ -1,0 +1,19 @@
+- name: install apache task
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: installing apache
+      dnf:
+        name: httpd
+        state: present
+
+    - name: start the apache
+      service: 
+        name: httpd
+        state: started
+
+    - name: deploy the static page in apache
+      copy:
+        src: /home/ec2-user/research/index.html
+        dest: /var/www/html

@@ -1,0 +1,11 @@
+- name: install apache task
+  hosts: web
+  become: yes
+  
+  tasks:
+    
+        
+    - name: uninstalling apache
+      dnf: 
+        name: httpd
+        state: absent
